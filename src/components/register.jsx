@@ -1,9 +1,10 @@
 "use client";
 import SaveUser from "@/functions/saveuser";
 import "./register.css";
-import { Result } from "postcss";
 import { useState } from "react";
 import Link from "next/link";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import axios from "axios";
 
 export default function RegForm() {
   const [emailerror, setemailerror] = useState("");
@@ -15,12 +16,42 @@ export default function RegForm() {
     setloading(status);
   }
 
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
   const handlesubmit = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
     const formData = new FormData(form);
 
     await Loadset(true);
+    //recaptcha code
+    if (!executeRecaptcha) {
+      console.log("Recaptcha not loaded");
+    }
+    const gRecaptchaToken = await executeRecaptcha("inquirySubmit");
+
+    const response = await axios({
+      method: "post",
+      url: "/api/recaptchasubmit",
+      data: {
+        gRecaptchaToken,
+      },
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response?.data?.success === true) {
+      console.log(`Success with score: ${response?.data?.score}`);
+      //setSubmit("ReCaptcha Verified and Form Submitted!");
+    } else {
+      console.log(`Failure with score: ${response?.data?.score}`);
+      //  setSubmit("Failed to verify recaptcha! You must be a robot!");
+    }
+
+    //recaptcha end
+
     const result = await SaveUser(formData);
     try {
       setemailerror(result.emailerror);

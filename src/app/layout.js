@@ -3,6 +3,7 @@ import "./globals.css";
 import TopNavigation from "../components/topnav";
 import SigninBar from "@/components/signinbar";
 import localfont from 'next/font/local';
+import GoogleCaptchaWrapper from "./GoogleCaptchaWrapper";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -48,7 +49,12 @@ export default function RootLayout({ children }) {
 
         <TopNavigation />
 
-        <div> {children}</div>
+        <div>
+          <GoogleCaptchaWrapper>
+            {children}
+          </GoogleCaptchaWrapper>
+
+        </div>
 
       </body>
     </html>
