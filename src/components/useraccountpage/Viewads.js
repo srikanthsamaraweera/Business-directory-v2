@@ -28,7 +28,8 @@ export default function Viewads() {
   const fetchData = async () => {
     if (!session) return;
     setLoading("Loading...");
-    const data = await fetchAds(currentPage, 6, session.user.email, searchTerm);
+    const data = await fetchAds(currentPage, 4, session.user.email, searchTerm);
+    // console.log("query data", currentPage, " ", 4, " ", session.user.email, " ", searchTerm);
     setLoading('');
     setRecords(data.records);
     setTotalPages(data.totalPages);

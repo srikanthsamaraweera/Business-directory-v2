@@ -3,7 +3,7 @@
 export async function fetchAds(page, limit, userEmail, searchTerm) {
     try {
         const response = await fetch(`/api/viewaduser?page=${page}&limit=${limit}&user_email=${userEmail}&titleval=${searchTerm}`);
-
+        console.log("url ", `/api/viewaduser?page=${page}&limit=${limit}&user_email=${userEmail}&titleval=${searchTerm}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
