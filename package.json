@@ -24,6 +24,7 @@
     "crypto": "^1.0.1",
     "firebase": "^10.12.2",
     "framer-motion": "^11.1.7",
+    "fslightbox-react": "^1.8.0",
     "next": "^14.2.27",
     "next-auth": "^4.24.8",
     "node-fetch": "^3.3.2",
@@ -33,7 +34,8 @@
     "react-google-recaptcha": "^3.1.0",
     "react-google-recaptcha-v3": "^1.10.1",
     "react-image-file-resizer": "^0.4.8",
-    "saas": "^1.0.0"
+    "saas": "^1.0.0",
+    "yet-another-react-lightbox": "^3.22.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
