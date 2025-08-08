@@ -33,8 +33,16 @@ const RegisterBusiness = ({ Saving, SetSaving, randno }) => {
 
   //*********variables for image upload end ********
 
-  const random = RandNum(1, 100000);
-  const date = new Date();
+  //const random = RandNum(1, 100000);
+  const now = new Date();
+
+  // Format date and time
+const formattedDate = now.toISOString().replace(/[:.]/g, '-'); // "2024-11-04T21-35-12-123Z"
+
+// Generate random ID
+const random = Math.floor(Math.random() * 1000000); // Or use nanoid if you prefer
+
+
 
   //code for recaptcha
   const [isverified, setisverified] = useState("");
@@ -351,10 +359,19 @@ const RegisterBusiness = ({ Saving, SetSaving, randno }) => {
     });
 
   const handleupload = async () => {
+
     if (!file) return;
     setUploading(true);
-    const f1file = `${date}${random}${file.name}`;
+     // Clean original file name
+const cleanFileName = file.name
+  .toLowerCase()
+  .replace(/\s+/g, '-')       // replace spaces with dashes
+  .replace(/[^a-z0-9.\-_]/g, '') // remove unsafe characters
+  
+    const f1file = `${formattedDate}_${random}_${cleanFileName}`;
     const storageref = ref(storage, `BDImages/${f1file}`);
+   
+
     setfilename1(f1file);
 
     try {
@@ -374,7 +391,7 @@ const RegisterBusiness = ({ Saving, SetSaving, randno }) => {
   const handleupload2 = async () => {
     if (!file2) return;
     setUploading(true);
-    const f2file = `${date}${random}${file2.name}`;
+    const f2file = `${formattedDate}_${random}_${cleanFileName}`;
     const storageref = ref(storage, `BDImages/${f2file}`);
     setfilename2(f2file);
 
