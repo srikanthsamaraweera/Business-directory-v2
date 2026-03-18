@@ -22,7 +22,7 @@
     "axios": "^1.13.5",
     "bcrypt": "^6.0.0",
     "crypto": "^1.0.1",
-    "firebase": "^10.12.2",
+    "firebase": "^12.10.0",
     "framer-motion": "^11.1.7",
     "fslightbox-react": "^1.8.0",
     "next": "^14.2.35",
