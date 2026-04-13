@@ -25,7 +25,7 @@
     "firebase": "^12.10.0",
     "framer-motion": "^11.1.7",
     "fslightbox-react": "^1.8.0",
-    "next": "^14.2.35",
+    "next": "^16.2.3",
     "next-auth": "^4.24.13",
     "node-fetch": "^3.3.2",
     "nodemailer": "^8.0.3",
