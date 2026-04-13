@@ -19,7 +19,7 @@
     "@nextui-org/popover": "^2.1.20",
     "@nextui-org/react": "^2.3.5",
     "@prisma/client": "^5.12.1",
-    "axios": "^1.13.5",
+    "axios": "^1.15.0",
     "bcrypt": "^6.0.0",
     "crypto": "^1.0.1",
     "firebase": "^12.10.0",
